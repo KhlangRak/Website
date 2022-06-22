@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduce MySelf</title>
+    <script
+      src="https://kit.fontawesome.com/1e85175913.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      * ul {
+        list-style: none;
+      }
+      * a {
+        text-decoration: none;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        background-color: gray;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10000;
+      }
+      .logo {
+        margin-left: 5cm;
+        margin-top: auto;
+        margin-bottom: auto;
+        cursor: pointer;
+      }
+      .bar {
+        align-items: center;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 10px;
+        margin-right: 5cm;
+      }
+      .bar ul {
+        padding: 20px 15px;
+        font-family: "Goudy Old Style";
+        text-align: center;
+        margin-left: 15px;
+        cursor: pointer;
+        font-size: 25px;
+        color: whitesmoke;
+      }
+      .bar ul:hover {
+        z-index: 10001;
+        background-color: #666;
+        transition: 0.25s;
+      }
+      .bar ul a {
+        color: whitesmoke;
+      }
+
+      body {
+        background: url("Picture/Wallpaper.jpg");
+        background-size: cover;
+      }
+      .home {
+        position: relative;
+        display: flex;
+        margin-top: 8cm;
+      }
+      .home_text {
+        position: relative;
+        display: fixed;
+        margin: auto;
+        margin-left: 10cm;
+      }
+      .home_text p {
+        box-sizing: border-box;
+        color: ghostwhite;
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: -4px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+      }
+      .home_text h1 {
+        box-sizing: border-box;
+        color: rgba(2, 2, 2, 0.979);
+        font-family: "Montserrat", sans-serif;
+        font-size: 54px;
+        font-weight: 900;
+        line-height: 64.4px;
+        margin-bottom: -4px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: -4px;
+      }
+      .home_text p1 {
+        box-sizing: border-box;
+        color: whitesmoke;
+        font-family: "Montserrat", sans-serif;
+        font-size: 30px;
+        line-height: 23.2667px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: -4px;
+        text-align: center;
+      }
+      .home_png img {
+        height: 400px;
+        position: relative;
+        margin-right: 10cm;
+        background-image: none;
+        border-radius: 20px;
+        border-style: ridge;
+        border-color: gainsboro;
+        box-shadow: 100cm;
+      }
+      .home_png img:hover {
+        z-index: 1;
+        transform: scale(1.5);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+      }
+      .home_icon {
+        box-sizing: border-box;
+        display: flex;
+        font-family: "Montserrat", sans-serif;
+        line-height: 27.6px;
+        margin-top: 20px;
+      }
+      .home_icon .fa-brands {
+        font-size: 50px;
+        color: rgba(55, 56, 65, 0.699);
+      }
+      .about {
+        position: relative;
+        display: flex;
+        margin-top: 7cm;
+        justify-content: center;
+        text-align: center;
+      }
+      .about_png img {
+        height: 150px;
+        width: 120px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .about_text {
+        font-size: 50px;
+        color: azure;
+        margin-top: auto;
+      }
+      .container {
+        position: relative;
+        width: 1600px;
+        height: 500px;
+        margin: 120px auto;
+      }
+      .box {
+        position: relative;
+        width: calc(400px - 30px);
+        height: calc(500px - 30px);
+        background: whitesmoke;
+        float: left;
+        margin: 15px;
+        box-sizing: border-box;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+      .icon {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: gray;
+        transition: 0.5s;
+        z-index: 1;
+      }
+      .container .box:hover .icon {
+        top: 20px;
+        left: calc(50% - 40px);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      .container .box .icon .fa-solid {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 100px;
+        transition: 0.5s;
+        color: rgb(0, 0, 0);
+      }
+      .container .box:hover .icon .fa-solid {
+        font-size: 50px;
+      }
+      .icon .fa {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 100px;
+        transition: 0.5s;
+        color: rgb(0, 0, 0);
+      }
+      .container .box:hover .icon .fa {
+        font-size: 50px;
+      }
+      .content {
+        position: relative;
+        top: 50px;
+        height: calc(100%-100px);
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: 0.5s;
+      }
+      .content h3 {
+        margin: 0;
+        padding: 0;
+        color: black;
+        font-size: 36px;
+      }
+      .content p {
+        margin: auto;
+        padding: 20px;
+        color: black;
+        font-size: 24px;
+      }
+      .content p img {
+        margin-top: auto;
+        width: 240px;
+        height: 150px;
+        border-radius: 15px;
+      }
+      .skill {
+        position: relative;
+        display: flex;
+        margin-top: 10cm;
+        justify-content: center;
+        text-align: center;
+      }
+      .skill_png img {
+        height: 180px;
+        width: 150px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .skill_text {
+        font-size: 80px;
+        color: azure;
+        margin-top: auto;
+      }
+      .slide-container {
+        width: 800px;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2cm;
+      }
+      .slide-main {
+        width: 800px;
+        height: 500px;
+        display: flex;
+      }
+      .slide-main input {
+        display: none;
+      }
+      .slide {
+        width: 100%;
+        transition: 2s;
+      }
+      .slide img {
+        width: 800px;
+        height: 400px;
+      }
+      .navi-manual {
+        position: absolute;
+        width: 800px;
+        margin-top: -40px;
+        display: flex;
+        justify-content: center;
+      }
+      .manual-btn {
+        border: 2px solid blue;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+      }
+      .manual-btn:not(:last-child) {
+        margin-right: 40px;
+      }
+      .manual-btn:hover {
+        background: #40d3dc;
+      }
+      #radio1:checked ~ .first {
+        margin-left: 0;
+      }
+      #radio2:checked ~ .first {
+        margin-left: -100%;
+      }
+      #radio3:checked ~ .first {
+        margin-left: -200%;
+      }
+      #radio4:checked ~ .first {
+        margin-left: -300%;
+      }
+      #radio5:checked ~ .first {
+        margin-left: -400%;
+      }
+      #radio6:checked ~ .first {
+        margin-left: -500%;
+      }
+      .navi-auto {
+        position: absolute;
+        display: flex;
+        width: 800px;
+        justify-content: center;
+        margin-top: 460px;
+      }
+      .navi-auto div {
+        border: 2px solid #40d3dc;
+        padding: 5px;
+        border-radius: 10px;
+        transition: 1s;
+      }
+      .navi-auto div:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      #radio1:checked ~ .navi-auto .auto-btn1 {
+        background: #40d3dc;
+      }
+      #radio2:checked ~ .navi-auto .auto-btn2 {
+        background: #40d3dc;
+      }
+      #radio3:checked ~ .navi-auto .auto-btn3 {
+        background: #40d3dc;
+      }
+      #radio4:checked ~ .navi-auto .auto-btn4 {
+        background: #40d3dc;
+      }
+      #radio5:checked ~ .navi-auto .auto-btn5 {
+        background: #40d3dc;
+      }
+      #radio6:checked ~ .navi-auto .auto-btn6 {
+        background: #40d3dc;
+      }
+      .Maincontact {
+        position: relative;
+        display: flex;
+        margin-top: 10cm;
+        justify-content: center;
+        text-align: center;
+      }
+      .Maincontact .Maincontact_png img {
+        height: 200px;
+        width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .Maincontact .Maincontact_text {
+        font-size: 100px;
+        color: azure;
+        margin-top: auto;
+      }
+      .contact {
+        position: relative;
+        min-height: 70vh;
+        padding: 50px 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .contact-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+      }
+      .contact-container .contactInfo {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+      .contact-container .contactInfo .contactbox {
+        position: relative;
+        padding: 20px 0;
+        display: flex;
+        margin-left: 5cm;
+      }
+      .contact-container .contactInfo .contactbox .contact-icon {
+        width: 60px;
+        height: 60px;
+        background: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 22px;
+      }
+      .contact-container .contactInfo .contactbox .contact-text {
+        display: flex;
+        margin-left: 20px;
+        color: #fff;
+        flex-direction: column;
+        font-weight: 300;
+      }
+      .contact-container .contactInfo .contactbox .contact-text h6 {
+        font-weight: 500;
+        color: whitesmoke;
+        font-size: 40px;
+      }
+      .contact-container .contactInfo .contactbox .contact-text p6 {
+        font-weight: 200;
+        color: gray;
+        font-size: 30px;
+      }
+      .contactForm {
+        width: 40%;
+        padding: 40px;
+        background: white;
+        border-radius: 10px;
+      }
+      .contactForm h7 {
+        font-size: 30px;
+        color: #333;
+        font-weight: 500;
+      }
+      .contactForm .inputBox {
+        position: relative;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .contactForm .inputBox input,
+      textarea {
+        width: 100%;
+        padding: 5px 0;
+        font-size: 16px;
+        margin: 10px 0;
+        border: none;
+        border-bottom: 2px solid #333;
+        outline: none;
+        resize: none;
+      }
+      .contactForm .inputBox span {
+        position: absolute;
+        left: 0;
+        padding: 5px 0;
+        font-size: 16px;
+        margin: 10px 0;
+        pointer-events: none;
+        transition: 0.5s;
+        color: #666;
+      }
+      .contactForm .inputBox input:focus ~ span,
+      input:valid ~ span,
+      textarea:focus ~ span,
+      textarea:valid ~ span {
+        color: grey;
+        font-size: 12px;
+        transform: translateY(-20px);
+      }
+      .contactForm .inputBox input[type="submit"] {
+        width: 100px;
+        background: #333;
+        color: aliceblue;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 18px;
+      }
+      .cursor {
+        z-index: 999;
+        position: fixed;
+        background: #666;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        pointer-events: none;
+        box-shadow: 0 0 20px #666, 0 0 20px #666, 0 0 20px #666;
+        animation: colors 5s infinite;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+
+      @keyframes colors {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+      .cursor::before {
+        content: "";
+        position: absolute;
+        background: #666;
+        width: 50px;
+        height: 50px;
+        opacity: 0.2;
+        transform: translate(-30%, -30%);
+        border-radius: 50%;
+      }
+      .gotop {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background: black;
+        border-radius: 50%;
+        bottom: 40px;
+        right: 50px;
+        text-decoration: none;
+        text-align: center;
+        line-height: 50px;
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 998;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.5s;
+      }
+      .gotop .top {
+        color: gainsboro;
+      }
+      .gotop.active {
+        bottom: 40px;
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+    <div class="navbar">
+      <div class="logo" onclick="scrolltoTop();">
+        <img src="/Picture/Logo.webp" alt="Home" height="50px" width="50px" />
+      </div>
+      <div class="bar">
+        <ul onclick="scrolltoTop();">
+          <i class="fa-solid fa-house"></i>
+          <a>Home</a>
+        </ul>
+        <ul onclick="scrolltoAbout();">
+          <i class="fa-solid fa-address-card"></i>
+          <a>About</a>
+        </ul>
+        <ul onclick="scrolltoSkill();">
+          <i class="fa-solid fa-book"></i>
+          <a>Skill</a>
+        </ul>
+        <ul onclick="scrolltoContact();">
+          <i class="fa-solid fa-phone"></i>
+          <a>Contact</a>
+        </ul>
+      </div>
+    </div>
+  </head>
+  <body>
+    <div class="home">
+      <div class="home_text">
+        <p>Hello, I'm</p>
+        <h1>Natthaphat Veranopsit</h1>
+        <p1>This Page is for Web Design</p1>
+        <div class="home_icon">
+          <a href="https://www.facebook.com/BestNatthaphat2548/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/Devil02741017">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/_bnatthaphat_/">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      <div class="home_png">
+        <img src="Base.jpg" />
+      </div>
+    </div>
+    <section id="about">
+      <div class="about">
+        <div class="about_png">
+          <img src="/Picture/About.png" />
+        </div>
+        <div class="about_text">
+          <h2>ABOUT ME</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="box">
+          <div class="icon">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="content">
+            <h3>Profile</h3>
+            <p>
+              Name : Natthaphat Veranopsit<br />
+              NickName : Best<br />
+              Age : 17<br />
+              School : Debsirin School<br />
+              Number : 099-132-7722
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          </div>
+          <div class="content">
+            <h3>SubJect I Like</h3>
+            <p>
+              <img src="/Picture/About/Math.png" /><br />
+              Mathematics
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+          </div>
+          <div class="content">
+            <h3>Hobby</h3>
+            <p>
+              <img src="/Picture/About/Hobby.png" /><br />
+              Gaming
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+          </div>
+          <div class="content">
+            <h3>Dream of Being</h3>
+            <p>
+              <img src="/Picture/About/Dev.png" /><br />
+              Game Developer
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="skill">
+      <div class="skill_png">
+        <img src="/Picture/Skill.png" />
+      </div>
+      <div class="skill_text">
+        <h4>MY SKILL</h4>
+      </div>
+    </div>
+    <div class="slide-container">
+      <div class="slide-main">
+        <input type="radio" name="radio-btn" id="radio1" />
+        <input type="radio" name="radio-btn" id="radio2" />
+        <input type="radio" name="radio-btn" id="radio3" />
+        <input type="radio" name="radio-btn" id="radio4" />
+        <input type="radio" name="radio-btn" id="radio5" />
+        <input type="radio" name="radio-btn" id="radio6" />
+        <div class="slide first">
+          <img src="/Picture/Skill/Html.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/Picture/Skill/Math.jpeg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/Picture/Skill/Phy.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/Picture/Skill/C.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/Picture/Skill/Exer.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/Picture/Skill/Eng.png" alt="" />
+        </div>
+        <div class="navi-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+          <div class="auto-btn4"></div>
+          <div class="auto-btn5"></div>
+          <div class="auto-btn6"></div>
+        </div>
+      </div>
+      <div class="navi-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+        <label for="radio5" class="manual-btn"></label>
+        <label for="radio6" class="manual-btn"></label>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var counter = 1;
+      setInterval(function () {
+        document.getElementById("radio" + counter).checked = true;
+        counter++;
+        if (counter > 6) {
+          counter = 1;
+        }
+      }, 5000);
+    </script>
+    <div class="Allcontact">
+      <div class="Maincontact">
+        <div class="Maincontact_png">
+          <img src="Picture/Contact.png" />
+        </div>
+        <div class="Maincontact_text">
+          <h5>CONTACT US</h5>
+        </div>
+      </div>
+      <section class="contact">
+        <div class="contact-container">
+          <div class="contactInfo">
+            <div class="contactbox">
+              <div class="contact-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-text">
+                <h6>Address</h6>
+                <p6
+                  >123 Unknow Road<br />BangT BangPakok<br />
+                  10160</p6
+                >
+              </div>
+            </div>
+            <div class="contactbox">
+              <div class="contact-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h6>Phone</h6>
+                <p6>099-132-7722</p6>
+              </div>
+            </div>
+            <div class="contactbox">
+              <div class="contact-icon">
+                <i class="fa-brands fa-discord"></i>
+              </div>
+              <div class="contact-text">
+                <h6>Discord</h6>
+                <p6>DevilWhite#1693</p6>
+              </div>
+            </div>
+          </div>
+          <div class="contactForm">
+            <form id="form" class="form">
+              <h7>Send Message</h7>
+              <div class="inputBox">
+                <input type="text" name="name" required="required" />
+                <span>Full Name</span>
+              </div>
+              <div class="inputBox">
+                <input type="text" name="" required="required" />
+                <span>Email</span>
+              </div>
+              <div class="inputBox">
+                <textarea required="required"></textarea>
+                <span>Type Your Message</span>
+              </div>
+              <div class="inputBox">
+                <input type="submit" name="" value="Send" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="cursor">
+      <script type="text/javascript">
+        const cursor = document.querySelector(".cursor");
+
+        document.addEventListener("mousemove", (e) => {
+          let x = e.clientX;
+          let y = e.clientY;
+
+          cursor.style.top = y + "px";
+          cursor.style.left = x + "px";
+          cursor.style.display = "block";
+        });
+
+        document.addEventListener("mouseout", (e) => {
+          cursor.style.display = "none";
+        });
+      </script>
+    </div>
+    <div class="gotop" onclick="scrolltoTop();">
+      <div class="top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </div>
+    </div>
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        var scroll = document.querySelector(".gotop");
+        scroll.classList.toggle("active", window.scrollY > 100);
+      });
+
+      function scrolltoTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+      function scrolltoAbout() {
+        window.scrollTo({
+          top: 800,
+          behavior: "smooth",
+        });
+      }
+      function scrolltoSkill() {
+        window.scrollTo({
+          top: 2000,
+          behavior: "smooth",
+        });
+      }
+      function scrolltoContact() {
+        window.scrollTo({
+          top: 3200,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>
